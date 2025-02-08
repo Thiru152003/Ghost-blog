@@ -1,0 +1,41 @@
+replicaCount: 1
+
+image:
+  repository: ghost
+  tag: latest
+  pullPolicy: IfNotPresent
+
+service:
+  type: ClusterIP
+  port: 2368
+
+persistence:
+  enabled: true
+  accessMode: ReadWriteOnce
+  size: 10Gi
+  storageClass: ""
+
+database:
+  type: mysql
+  host: mysql
+  port: 3306
+  user: ghost
+  password: ghostpassword
+  name: ghost_db
+
+env:
+  url: "http://ghost.local"
+  database__client: "mysql"
+  database__connection__host: "mysql"
+  database__connection__user: "ghost"
+  database__connection__password: "ghostpassword"
+  database__connection__database: "ghost_db"
+
+resources:
+  limits:
+    cpu: 500m
+    memory: 512Mi
+  requests:
+    cpu: 250m
+    memory: 256Mi
+

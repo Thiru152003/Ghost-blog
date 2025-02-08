@@ -1,0 +1,6 @@
+apiVersion: v2
+name: ghost-blog
+description: A Helm chart for deploying Ghost Blog using the official Ghost image
+type: application
+version: 1.0.0
+appVersion: "latest"
